@@ -1,8 +1,10 @@
 <?php
 
+namespace App\Repository\Nasdaq;
+use AllowDynamicProperties;
 use Illuminate\Support\Facades\Http;
 
-#[AllowDynamicProperties] class Listings
+#[AllowDynamicProperties] class Listings implements ListingsInterface
 {
 
     public string $company_name = '';
@@ -14,15 +16,14 @@ use Illuminate\Support\Facades\Http;
     }
 
 
-    function get_listings()
+    /**
+     * @return array|mixed
+     */
+    function get_listings(): mixed
     {
-        $json = Http::get($this->url);
-        dd($json);
+        $data = Http::get($this->url);
+        return $data->json();
     }
 
-    function get_company_symbol()
-    {
-
-    }
 
 }
