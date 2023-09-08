@@ -1,7 +1,8 @@
 <?php
 
 namespace App\Repository\Nasdaq;
-use AllowDynamicProperties;
+
+
 use Illuminate\Support\Facades\Http;
 
 #[AllowDynamicProperties] class Listings implements ListingsInterface

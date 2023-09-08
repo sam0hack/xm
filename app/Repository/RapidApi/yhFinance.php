@@ -1,8 +1,9 @@
 <?php
 
-namespace app\Repository\RapidApi;
+namespace App\Repository\RapidApi;
 
 use Illuminate\Support\Facades\Http;
+
 class yhFinance implements \App\Repository\RapidApi\FinanceInterface
 {
     protected string $host = 'yh-finance.p.rapidapi.com';
