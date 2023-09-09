@@ -27,8 +27,6 @@ Route::get('/', function () {
 
 Route::get('/dashboard', [DashboardController::class,'index'])->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::get('/test',[\App\Http\Controllers\testController::class,'index'])->name('test');
-
 
 Route::middleware('auth')->group(function () {
     Route::post('/get-historical-data',[DashboardController::class,'getHistoricalData'])->name('get-historical-data');
