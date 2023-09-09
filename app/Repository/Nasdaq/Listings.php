@@ -34,13 +34,34 @@ class Listings implements ListingsInterface
      */
     function getSymbol(): array
     {
-        $listing_json = [];
-        for ($i = 0; $i < count($this->data); $i++) {
-            $listing_json[] = ['value' => $this->data[$i]['Symbol'], 'label' => $this->data[$i]['Symbol']];
-        }
-
-        return $listing_json;
+        return $this->filterData('Symbol');
     }
 
+    function getName(): array
+    {
+        return $this->filterData('Company Name');
+    }
+
+    function getNameBySymbol($symbol): array
+    {
+        return $this->filterData($symbol,'Company Name');
+    }
+
+    protected function filterData($key,$get=''): array
+    {
+
+        $data = [];
+        for ($i = 0; $i < count($this->data); $i++) {
+            if (!empty($get)){
+                if ($this->data[$i]['Symbol'] == $key){
+                    $data = [$this->data[$i]['Symbol'],$this->data[$i][$get]];
+                }
+            }else {
+                $data[] = ['value' => $this->data[$i][$key], 'label' => $this->data[$i][$key]];
+            }
+        }
+
+        return $data;
+    }
 
 }
