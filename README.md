@@ -22,7 +22,7 @@ To make the most out of the application's features, follow the steps below:
 
 ## Technical Introduction
 
-This project is built using **Laravel v10.22.0** and is configured to run in a Docker container using **Laravel Sail**. This provides an isolated environment to run the application, ensuring consistency across all development environments.
+This project is built using **Laravel v10.22.0** With **ReactJs** and **InertiaJS** and is configured to run in a Docker container using **Laravel Sail**. This provides an isolated environment to run the application, ensuring consistency across all development environments.
 
 ## Technical Highlights
 
@@ -88,6 +88,16 @@ Make sure to add `X_RAPID_API_KEY` from your Rapid api account without this toke
 
 ### 4. Run with Docker using Laravel Sail
 Laravel Sail is a light-weight command-line interface for interacting with Laravel's default Docker environment. The recommended way to run the project is using Sail.
+Please review the `docker-compose.yml` to check the ports of the application and change them according to your
+requirements.
+
+## Current Ports
+
+- Application:`http://localhost:80`
+- MailPit server: `http://localhost:8025`
+- Laravel Vite dev Server:`http://localhost:5173`
+- Redis: `http://localhost:6379`
+- MariaDb: `http://localhost:3306`
 
 To start the Docker containers for the project, run:
 
