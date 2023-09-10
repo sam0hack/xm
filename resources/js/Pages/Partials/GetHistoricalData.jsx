@@ -83,9 +83,7 @@ export default function GetHistoricalData({listings}) {
             {/* Historical quotes form section */}
             <div className="p-4 sm:p-8 bg-white dark:bg-gray-800 shadow sm:rounded-lg">
                 <section>
-                    <header>
-                        <h2 className="text-lg font-medium text-gray-900 dark:text-gray-100">Historical quotes</h2>
-                    </header>
+
                     <form onSubmit={submit}>
                         {/* Form controls for data input */}
                         <div className='flex mt-2 items-center'>
@@ -135,7 +133,7 @@ export default function GetHistoricalData({listings}) {
             </div>
 
             {/* Loading or Displaying Historical Data */}
-            <div className="mt-20 p-4 sm:p-8 bg-white dark:bg-gray-800 shadow sm:rounded-lg">
+            <div className={loading || historical_data ? 'mt-20 p-4 sm:p-8 bg-white dark:bg-gray-800 shadow sm:rounded-lg' : ''  }>
                 {loading ? (
                     <Loading/>
                 ) : (
