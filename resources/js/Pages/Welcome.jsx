@@ -51,7 +51,7 @@ export default function Welcome({ auth, laravelVersion, phpVersion }) {
                     <div className="container mx-auto p-10">
 
 
-                        <h2 className="text-3xl font-semibold mb-4">Project Description</h2>
+                        <h2 className="text-3xl font-semibold mb-4">The Portal</h2>
                         <p className="mb-4">Welcome to our data visualization application, meticulously crafted using the Laravel framework in conjunction with ReactJs for a seamless user experience.</p>
 
                         <h2 className="text-3xl font-semibold mb-4">Overview</h2>
@@ -69,20 +69,6 @@ export default function Welcome({ auth, laravelVersion, phpVersion }) {
                                 <li className="mb-2">Visualizing Data: After submission, you will be presented with comprehensive charts visualizing the historical data for clearer insights.</li>
                             </ol>
 
-
-
-                        <h2 className="text-3xl font-semibold mb-4">Technical Introduction</h2>
-                        <p className="mb-4">This project is built using <strong>Laravel v10.22.0</strong> and is configured to run in a Docker container using <strong>Laravel Sail</strong>. This provides an isolated environment to run the application, ensuring consistency across all development environments.</p>
-
-                        <h2 className="text-3xl font-semibold mb-4">Technical Highlights</h2>
-                        <h3 className="text-2xl font-semibold mb-2">Design Patterns</h3>
-                        <p className="mb-4">In addition to Laravel's foundational MVC (Model-View-Controller) design pattern, this application incorporates the <strong>Repository Design Pattern</strong>. By integrating the Repository pattern with the traditional MVC:</p>
-                        <ul className="list-disc list-inside mb-4">
-                            <li className="mb-2"><strong>Decoupling</strong>: We have effectively decoupled the application logic from the data access logic, providing a more structured and scalable codebase.</li>
-                            <li className="mb-2"><strong>Swap-ability</strong>: The application gains the ability to easily swap out the data source or the database without changing application logic, offering more flexibility in terms of data storage solutions.</li>
-                            <li className="mb-2"><strong>Scalability</strong>: As the application grows and scales, handling larger data sets or integrating multiple data sources becomes much more manageable. The repository pattern ensures that the application remains robust and adaptable to evolving requirements.</li>
-                        </ul>
-                        <p className="mb-4">This strategic move towards the Repository pattern ensures a future-ready foundation for the application, facilitating smooth scalability and maintainability as the application expands.</p>
 
                     </div>
 
