@@ -135,4 +135,33 @@ http://localhost:8025/
 ```
 By using Mailpit, we can easily inspect the emails, verify their content, and ensure that our application's email features are functioning as expected without any side effects.
 
+## Future Improvements
+
+In our ongoing commitment to improving the application and maintaining best practices, here's a to-do list of potential enhancements that could make this project even more robust and user-friendly:
+
+1. **Expand API Integrations**:
+    - **Description**: Integrate more API endpoints to diversify data sources. This will enhance our data robustness and offer users a broader perspective.
+    - **Benefits**: Increases data reliability and provides users with a comprehensive set of data points.
+
+2. **UI Folder Structure**:
+    - **Description**: Given that we're using ReactJS, there's potential to optimize our folder structure. As the project scales, a well-organized structure will become essential for manageability.
+    - **Benefits**: Improves code maintainability and readability, making it easier for developers to navigate and collaborate.
+
+3. **Component & Service Segregation**:
+    - **Description**: Break down UI elements into more granular components for better reusability. Additionally, create a separate services directory dedicated to API handling and business logic.
+    - **Benefits**: Promotes modular design, enhancing code reusability and separation of concerns.
+
+4. **Enhanced Testing**:
+    - **Description**: While we currently utilize Laravel Pest for testing, there's always room to expand our test suite, including more end-to-end tests, integration tests, and performance benchmarks.
+    - **Benefits**: Ensures robustness of the application, reduces bugs, and ensures smooth performance as new features are added.
+
+5. **Implement State Management**:
+    - **Description**: As the application grows, managing state can become complex. Implementing a state management solution like Redux or MobX can help manage global state more effectively.
+    - **Benefits**: Offers a structured way to manage and track application state, ensuring consistency and reliability of the UI.
+
+6. **Optimize Performance**:
+    - **Description**: Regularly profile the application to identify bottlenecks or performance issues. This includes optimizing database queries, reducing unnecessary re-renders in React, and using CDN for static assets.
+    - **Benefits**: Ensures a smooth user experience, faster load times, and efficient resource utilization.
+
+By prioritizing these tasks, we aim to future-proof our application, ensuring it remains scalable, maintainable, and offers the best experience to our users.
 
