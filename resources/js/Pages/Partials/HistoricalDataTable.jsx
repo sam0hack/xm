@@ -3,7 +3,7 @@ export default function HistoricalDataTable({historical_data}) {
     return (
         <section className=''>
             <header>
-                <h2 className="text-lg font-medium text-gray-900 dark:text-gray-100">Historical Data</h2>
+                <h2 className="text-lg font-medium text-gray-900 dark:text-gray-100">Historical Quotes</h2>
             </header>
 
 
