@@ -4,6 +4,7 @@ namespace App\Repository\RapidApi;
 
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Redis;
 
 class yhFinance implements \App\Repository\RapidApi\FinanceInterface
 {
@@ -27,8 +28,29 @@ class yhFinance implements \App\Repository\RapidApi\FinanceInterface
      */
     function get_historical_data(): array
     {
-        $data = Http::withHeaders(['X-RapidAPI-Key' => env('X_RAPID_API_KEY'), 'X-RapidAPI-Host' => $this->host])->get($this->url . 'symbol=' . $this->symbol . '&region=' . $this->region);
-        return $this->filterWithDateRange($data->json());
+        // Generate a cache key based on request parameters
+        $cacheKey = "yh_finance:{$this->symbol}:{$this->start_date}:{$this->end_date}:{$this->region}";
+
+        // Try to get the data from Redis
+        $cachedData = Redis::get($cacheKey);
+
+        if ($cachedData) {
+            return json_decode($cachedData, true);
+        }
+
+
+        // If not in Redis, fetch data from the API
+        $data = Http::withHeaders([
+            'X-RapidAPI-Key' => env('X_RAPID_API_KEY'),
+            'X-RapidAPI-Host' => $this->host
+        ])->get($this->url . 'symbol=' . $this->symbol . '&region=' . $this->region);
+
+        $filteredData = $this->filterWithDateRange($data->json());
+
+        // Store the result in Redis for 24 hours
+        Redis::set($cacheKey, json_encode($filteredData), 'EX', 86400);
+
+        return $filteredData;
 
     }
 

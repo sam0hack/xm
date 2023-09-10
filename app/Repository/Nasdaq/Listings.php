@@ -3,6 +3,7 @@
 namespace App\Repository\Nasdaq;
 
 use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Redis;
 
 class Listings implements ListingsInterface
 {
@@ -24,9 +25,20 @@ class Listings implements ListingsInterface
      */
     function listings(): static
     {
-        $data = Http::get($this->url);
-        $this->data = $data->json();
+        // Try to get data from Redis first
+        $data = Redis::get('nasdaq_listings');
+
+        if (!$data) {
+            $response = Http::get($this->url);
+            $this->data = $response->json();
+
+            // Store data to Redis with a 24 hour expiration
+            Redis::set('nasdaq_listings', json_encode($this->data), 'EX', 86400);
+        } else {
+            $this->data = json_decode($data, true);
+        }
         return $this;
+
     }
 
     /**
@@ -44,19 +56,19 @@ class Listings implements ListingsInterface
 
     function getNameBySymbol($symbol): array
     {
-        return $this->filterData($symbol,'Company Name');
+        return $this->filterData($symbol, 'Company Name');
     }
 
-    protected function filterData($key,$get=''): array
+    protected function filterData($key, $get = ''): array
     {
 
         $data = [];
         for ($i = 0; $i < count($this->data); $i++) {
-            if (!empty($get)){
-                if ($this->data[$i]['Symbol'] == $key){
-                    $data = [$this->data[$i]['Symbol'],$this->data[$i][$get]];
+            if (!empty($get)) {
+                if ($this->data[$i]['Symbol'] == $key) {
+                    $data = [$this->data[$i]['Symbol'], $this->data[$i][$get]];
                 }
-            }else {
+            } else {
                 $data[] = ['value' => $this->data[$i][$key], 'label' => $this->data[$i][$key]];
             }
         }
